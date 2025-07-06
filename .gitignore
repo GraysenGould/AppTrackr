@@ -1,28 +1,93 @@
-# Angular specific
-/dist/
-/out-tsc/
-/tmp/
-/coverage/
-/e2e/test-output/
-/.angular/
-.angular/
+##########################
+# ASP.NET / Visual Studio
+##########################
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+*.log
+*.tmp
+
+# Visual Studio
+.vs/
+*.pidb
+*.svclog
+
+# MSBuild logs
+*.binlog
+
+# Test Results
+TestResults/
+*.trx
+
+# Rider and ReSharper
+.idea/
+*.DotSettings.user
+_ReSharper*/
+
+# .NET Core artifacts
+project.lock.json
+artifacts/
+ScaffoldingReadMe.txt
+
+# Database files
+*.mdf
+*.ldf
+
+# Publish output
+publish/
+*.pubxml
+*.publishproj
+*.azurePubxml
+
+# Package management
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targetss
+
+
+
+##############
+#  ANGULAR   #
+##############
+
+# Angular specific (within apptracker.client)
+apptracker.client/dist/
+apptracker.client/out-tsc/
+apptracker.client/tmp/
+apptracker.client/coverage/
+apptracker.client/e2e/test-output/
+apptracker.client/.angular/
+apptracker.client/.angular/
 
 # Node modules and dependency files
-/node_modules/
-/package-lock.json
-/yarn.lock
+apptracker.client/node_modules/
+apptracker.client/package-lock.json
+apptracker.client/yarn.lock
 
 # Environment files
-/.env
+apptracker.client/.env
 
 # Angular CLI and build artefacts
-/.angular-cli.json
-/.ng/
+apptracker.client/.angular-cli.json
+apptracker.client/.ng/
 
 # TypeScript cache
-*.tsbuildinfo
+apptracker.client/*.tsbuildinfo
 
 # Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+apptracker.client/npm-debug.log*
+apptracker.client/yarn-debug.log*
+apptracker.client/yarn-error.log*
+
+

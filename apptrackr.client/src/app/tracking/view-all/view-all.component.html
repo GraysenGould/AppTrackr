@@ -1,1 +1,22 @@
-<p>view-all works!</p>
+<table>
+    @if (apps.length > 0) {
+        <tr>
+            <th>Id</th>
+            <th>Company</th>
+            <th>Application Date</th>
+            <th>Application Status</th>
+        </tr>  
+    }
+@for (a of apps; track a.Id) {
+    <tr>
+        <td>{{a.Id}}</td>
+        <td>{{a.Company}}</td>
+        <td>{{a.ApplicationDate}}</td>
+        <td>{{a.Status}}</td>
+    </tr>
+} @empty {
+    <a href="/applications/create-application" target="_self" rel="noopener">
+        <forge-button variant="raised">Create New Application</forge-button>
+    </a>
+}
+</table>

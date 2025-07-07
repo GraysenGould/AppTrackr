@@ -1,1 +1,15 @@
-<p>create works!</p>
+<form #appForm="ngForm" (ngSubmit)="submitApplication(newApplication)">
+    <label for="id">Id:</label><br>
+    <input name="id" [(ngModel)]="newApplication.Id"><br>
+
+    <label for="Company">Company:</label><br>
+    <input name="company" [(ngModel)]="newApplication.Company"><br>
+
+    <label for="Application Date">Application Date:</label><br>
+    <input name="applicationDate" [(ngModel)]="newApplication.ApplicationDate"><br>
+
+    <label for="Status">Status:</label><br>
+    <input name="status" [(ngModel)]="newApplication.Status"><br>
+
+    <button type="submit">Create</button>
+</form>

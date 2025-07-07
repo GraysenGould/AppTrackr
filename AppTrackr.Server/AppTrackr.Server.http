@@ -1,6 +1,6 @@
 @AppTrackr.Server_HostAddress = http://localhost:5248
 
-GET {{AppTrackr.Server_HostAddress}}/weatherforecast/
+GET {{AppTrackr.Server_HostAddress}}/tracker/
 Accept: application/json
 
 ###

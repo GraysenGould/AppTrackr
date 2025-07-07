@@ -10,7 +10,18 @@ namespace AppTrackr.Server
 
             builder.Services.AddControllers();
 
-            var app = builder.Build();
+			builder.Services.AddCors(options =>
+			{
+				options.AddPolicy("AllowAll", policy =>
+				{
+					policy
+						.AllowAnyOrigin()
+						.AllowAnyHeader()
+						.AllowAnyMethod();
+				});
+			});
+
+			var app = builder.Build();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -19,7 +30,9 @@ namespace AppTrackr.Server
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+			app.UseCors("AllowAll");
+
+			app.UseAuthorization();
 
 
             app.MapControllers();

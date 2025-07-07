@@ -9,8 +9,12 @@ export class HttpService {
 
     postNewApplication (newApp: ApplicationModel){
         console.log("thing ran");
-        this.http.post<ApplicationModel>('/api/applications/create-application', newApp).subscribe(app =>{
+        this.http.post<ApplicationModel>('https://localhost:7167/tracking/create', newApp).subscribe(app =>{
             console.log("new Application submitted:", app);
         })
-    }       
+    }
+    
+    getApplications (){
+        return this.http.get<ApplicationModel[]>('https://localhost:7167/tracking/view-all');
+    }
 }

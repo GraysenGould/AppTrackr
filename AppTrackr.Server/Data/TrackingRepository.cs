@@ -6,11 +6,53 @@ namespace AppTrackr.Server.Data
 	public class TrackingRepository : ITrackingRepository
 	{
 
-		public TrackingRepository()
+		private TrackingContext _trackingContext;
+		public TrackingRepository(TrackingContext trackingContext)
 		{
-			using (var context = new TrackingContext())
+			_trackingContext = trackingContext;
+		}
+		public ApplicationModel GetApplicationById(int applicationId)
+		{
+			var application = _trackingContext.Applications.FirstOrDefault(app => app.Id == applicationId);
+
+			if (application == null)
 			{
-				var applications = new List<ApplicationModel>
+				throw new Exception("ID not found in database");
+			}
+			else
+			{
+				return application;
+			}
+		}
+
+		public List<ApplicationModel> GetAllApplications()
+		{
+			var applications = _trackingContext.Applications.ToList();
+
+			if (applications == null)
+			{
+				throw new Exception("Error retreiving applications");
+			}
+			else
+			{
+				return applications;
+			}
+		}
+
+		public void AddApplication(ApplicationModel Application)
+		{
+
+			if (Application == null || Application.Id == null)
+			{
+				throw new Exception("Application is Null");
+			}
+			_trackingContext.Applications.Add(Application);
+			_trackingContext.SaveChanges();
+		}
+
+		public void AddSample()
+		{
+			var applications = new List<ApplicationModel>
 				{
 					new ApplicationModel
 					{
@@ -27,37 +69,8 @@ namespace AppTrackr.Server.Data
 						Status = "In Progress"
 					}
 				};
-				context.Applications.AddRange(applications);
-				context.SaveChanges();
-			}
-		}
-		public ApplicationModel GetApplication(int applicationId)
-		{
-			using (var context = new TrackingContext())
-			{
-				var application = context.Applications.FirstOrDefault(app => app.Id == applicationId);
-
-				if (application == null)
-				{
-					throw new Exception("ID not found in database");
-				}
-				else
-				{
-					return application;
-				}
-			}
-		}
-		public void SetApplication(ApplicationModel Application)
-		{
-			using (var context = new TrackingContext())
-			{
-				if (Application == null || Application.Id == null) 
-				{
-					throw new Exception("Application is Null");
-				}
-				context.Applications.Add(Application);
-				context.SaveChanges();
-			}
+			_trackingContext.Applications.AddRange(applications);
+			_trackingContext.SaveChanges();
 		}
 	}
 }

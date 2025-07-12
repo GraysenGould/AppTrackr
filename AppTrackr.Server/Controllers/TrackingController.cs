@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using AppTrackr.Server.Models;
+using AppTrackr.Server.Interfaces;
 
 namespace AppTrackr.Server.Controllers
 {
@@ -9,33 +10,30 @@ namespace AppTrackr.Server.Controllers
 	{
 
 		private readonly ILogger<TrackingController> _logger;
+		private ITrackingRepository _trackingRepository;
 
-		public TrackingController(ILogger<TrackingController> logger)
+		public TrackingController(ITrackingRepository trackingRepository, ILogger<TrackingController> logger)
 		{
 			_logger = logger;
+			_trackingRepository = trackingRepository;
 		}
 
 		[HttpPost("create")]
-		public IActionResult PostApplication([FromBody] ApplicationModel app)
+		public IActionResult PostApplication([FromBody] ApplicationModel application)
 		{
-			Console.WriteLine($"Company Name: {app.Company}");
+			_trackingRepository.AddApplication(application);
+			Console.WriteLine($"Company Name: {application.Company}");
 			return Ok();
 		}
 
 
 
 		[HttpGet("view-all")]
-		public IEnumerable<ApplicationModel> Get()
+		public IEnumerable<ApplicationModel> GetAllApplications()
 		{
-			var newList = new List<ApplicationModel>
-			{
-				new ApplicationModel()
-				{
-					Id = 1,
-					Status = "filled"
-				}
-			};
-			return newList;
+			var allApplications = _trackingRepository.GetAllApplications();
+			Console.WriteLine($"all applications: ${allApplications[0].Company}");
+			return allApplications;
 		}
 	}
 }

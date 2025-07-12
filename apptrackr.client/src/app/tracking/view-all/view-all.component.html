@@ -1,5 +1,5 @@
 <table>
-    @if (apps.length > 0) {
+    @if (allApplications.length > 0) {
         <tr>
             <th>Id</th>
             <th>Company</th>
@@ -7,12 +7,12 @@
             <th>Application Status</th>
         </tr>  
     }
-@for (a of apps; track a.Id) {
+@for (app of allApplications; track app.id) {
     <tr>
-        <td>{{a.Id}}</td>
-        <td>{{a.Company}}</td>
-        <td>{{a.ApplicationDate}}</td>
-        <td>{{a.Status}}</td>
+        <td>{{app.id}}</td>
+        <td>{{app.company}}</td>
+        <td>{{app.applicationDate}}</td>
+        <td>{{app.status}}</td>
     </tr>
 } @empty {
     <a href="/applications/create-application" target="_self" rel="noopener">
@@ -21,4 +21,6 @@
 }
 </table>
 
-<button (click)="GetAllApps()">Press Here</button>
+<p>All Applications: {{allApplications[0].company}}</p>
+<button (click)="GetAllApps()">Get all Apps</button><br>
+<button (click)="PrintApps()">Print Apps</button>

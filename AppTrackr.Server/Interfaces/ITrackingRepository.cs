@@ -3,7 +3,9 @@ namespace AppTrackr.Server.Interfaces
 {
 	public interface ITrackingRepository
 	{
-		public ApplicationModel GetApplication(int applicationId);
-		public void SetApplication(ApplicationModel Application);
+		public ApplicationModel GetApplicationById(int applicationId);
+		public void AddApplication(ApplicationModel Application);
+		public List<ApplicationModel> GetAllApplications();
+		public void AddSample();
 	}
 }

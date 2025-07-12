@@ -1,3 +1,7 @@
+using AppTrackr.Server.Data;
+using AppTrackr.Server.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
 namespace AppTrackr.Server
 {
     public class Program
@@ -6,7 +10,11 @@ namespace AppTrackr.Server
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+			// Add services to the container.
+			builder.Services.AddDbContext<TrackingContext>(options =>
+					options.UseInMemoryDatabase(databaseName: "TrackingDb"));
+
+			builder.Services.AddScoped<ITrackingRepository, TrackingRepository>();
 
             builder.Services.AddControllers();
 

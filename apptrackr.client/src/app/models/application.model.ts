@@ -1,6 +1,6 @@
 export interface ApplicationModel {
-    Id: number,
-    Company: string,
-    ApplicationDate: string,
-    Status: string
+    id: number,
+    company: string,
+    applicationDate: string,
+    status: string
 }

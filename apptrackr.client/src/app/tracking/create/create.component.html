@@ -1,15 +1,15 @@
 <form #appForm="ngForm" (ngSubmit)="submitApplication(newApplication)">
     <label for="id">Id:</label><br>
-    <input name="id" [(ngModel)]="newApplication.Id"><br>
+    <input name="id" [(ngModel)]="newApplication.id"><br>
 
     <label for="Company">Company:</label><br>
-    <input name="company" [(ngModel)]="newApplication.Company"><br>
+    <input name="company" [(ngModel)]="newApplication.company"><br>
 
     <label for="Application Date">Application Date:</label><br>
-    <input name="applicationDate" [(ngModel)]="newApplication.ApplicationDate"><br>
+    <input name="applicationDate" [(ngModel)]="newApplication.applicationDate"><br>
 
     <label for="Status">Status:</label><br>
-    <input name="status" [(ngModel)]="newApplication.Status"><br>
+    <input name="status" [(ngModel)]="newApplication.status"><br>
 
     <button type="submit">Create</button>
 </form>

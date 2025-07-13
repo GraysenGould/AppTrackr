@@ -32,7 +32,7 @@ namespace AppTrackr.Server.Controllers
 		public IEnumerable<ApplicationModel> GetAllApplications()
 		{
 			var allApplications = _trackingRepository.GetAllApplications();
-			Console.WriteLine($"all applications: ${allApplications[0].Company}");
+			//Console.WriteLine($"all applications: ${allApplications[0].Company}");
 			return allApplications;
 		}
 	}

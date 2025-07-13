@@ -12,7 +12,7 @@ import {HttpService} from '../../services/http.service';
 export class CreateComponent {
   constructor (private httpService: HttpService ){}
   newApplication: ApplicationModel = {
-    id: 0,
+    id: undefined,
     company: "",
     applicationDate: "",
     status: ""

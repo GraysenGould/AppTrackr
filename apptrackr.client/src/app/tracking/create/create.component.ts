@@ -14,7 +14,7 @@ export class CreateComponent {
   newApplication: ApplicationModel = {
     id: undefined,
     company: "",
-    applicationDate: "",
+    applicationDate: new Date(),
     status: ""
   }
 

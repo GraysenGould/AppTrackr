@@ -1,6 +1,6 @@
 export interface ApplicationModel {
     id?: number,
     company: string,
-    applicationDate: Date,
+    applicationDate: string,
     status: string
 }

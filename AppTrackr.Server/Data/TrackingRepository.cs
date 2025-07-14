@@ -58,14 +58,14 @@ namespace AppTrackr.Server.Data
 					{
 						Id = 1,
 						Company = "NVIDIA",
-						ApplicationDate = "01-01-2025",
+						ApplicationDate = new DateTime(),
 						Status = "Waiting"
 					},
 					new ApplicationModel
 					{
 						Id = 2,
 						Company = "Amazon",
-						ApplicationDate = "02-01-2025",
+						ApplicationDate = new DateTime(),
 						Status = "In Progress"
 					}
 				};

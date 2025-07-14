@@ -1,13 +1,14 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+
 import {APPS} from '../../mock-data/applications';
 import {ForgeButtonModule } from '@tylertech/forge-angular';
 import {HttpService} from '../../services/http.service';
 import {ApplicationModel} from '../../models/application.model';
-import { JsonPipe, CommonModule } from '@angular/common';
+import { JsonPipe, CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-view-all',
-  imports: [ForgeButtonModule],
+  imports: [ForgeButtonModule, CommonModule],
   templateUrl: './view-all.component.html',
   styleUrl: './view-all.component.scss'
 })

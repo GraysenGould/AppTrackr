@@ -11,7 +11,7 @@
     <tr>
         <td>{{app.id}}</td>
         <td>{{app.company}}</td>
-        <td>{{app.applicationDate}}</td>
+        <td>{{app.applicationDate | date: 'MM/dd/yyyy'}}</td>
         <td>{{app.status}}</td>
     </tr>
 } @empty {

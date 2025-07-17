@@ -11,7 +11,7 @@ namespace AppTrackr.Server.Data
 		{
 			_trackingContext = trackingContext;
 		}
-		public ApplicationModel GetApplicationById(int applicationId)
+		public ApplicationModel GetApplicationById(int? applicationId)
 		{
 			var application = _trackingContext.Applications.FirstOrDefault(app => app.Id == applicationId);
 

@@ -1,0 +1,14 @@
+<form [formGroup]="applicationForm" (ngSubmit)="putUpdated()">
+    <label for="id">Id</label><br>
+    <input id="od" type="number" formControlName="id"><br>
+
+    <label for="company">Company</label><br>
+    <input id="company" type="text" formControlName="company"><br>
+
+    <label for="application-date">Application Date</label><br>
+    <input id="application-date" type="date" formControlName="applicationDate"><br> 
+
+    <label for="status">Status</label><br>
+    <input id="status" type="text" formControlName="status"><br>
+    <button type="submit">Submit</button><br>
+</form>

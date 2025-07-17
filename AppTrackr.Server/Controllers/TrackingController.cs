@@ -28,12 +28,22 @@ namespace AppTrackr.Server.Controllers
 
 
 
-		[HttpGet("view-all")]
-		public IEnumerable<ApplicationModel> GetAllApplications()
+		[HttpGet("view-all/{id?}")]
+		public IEnumerable<ApplicationModel> GetAllApplications(int? id)
 		{
-			var allApplications = _trackingRepository.GetAllApplications();
-			//Console.WriteLine($"all applications: ${allApplications[0].Company}");
-			return allApplications;
+			if (id == null)
+			{
+				var allApplications = _trackingRepository.GetAllApplications();
+				//Console.WriteLine($"all applications: ${allApplications[0].Company}");
+				return allApplications;
+			}
+			else
+			{
+				var allApplications = new List<ApplicationModel>();
+				allApplications.Add(_trackingRepository.GetApplicationById(id));
+				return allApplications;
+			}
+
 		}
 	}
 }

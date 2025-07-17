@@ -1,8 +1,7 @@
 import { Component} from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { ApplicationModel } from '../../models/application.model';
 import {HttpService} from '../../services/http.service';
-import {FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-create-application',

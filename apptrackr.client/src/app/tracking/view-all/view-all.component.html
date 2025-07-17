@@ -5,6 +5,7 @@
             <th>Company</th>
             <th>Application Date</th>
             <th>Application Status</th>
+            <th>Actions</th>
         </tr>  
     }
 @for (app of allApplications; track app.id) {
@@ -13,9 +14,10 @@
         <td>{{app.company}}</td>
         <td>{{app.applicationDate | date: 'MM/dd/yyyy'}}</td>
         <td>{{app.status}}</td>
+        <td><a [routerLink]="['/tracking/edit', app.id]">edit</a> <a>delete</a></td>
     </tr>
 } @empty {
-    <a href="/applications/create-application" target="_self" rel="noopener">
+    <a href="/tracking/create-application" target="_self" rel="noopener">
         <forge-button variant="raised">Create New Application</forge-button>
     </a>
 }

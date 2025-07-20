@@ -1,7 +1,5 @@
 ﻿using AppTrackr.Server.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.InMemory;
-using System;
 
 namespace AppTrackr.Server.Data
 {

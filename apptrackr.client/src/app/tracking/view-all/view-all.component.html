@@ -2,6 +2,7 @@
     @if (allApplications.length > 0) {
         <tr>
             <th>Id</th>
+            <th>Position</th>
             <th>Company</th>
             <th>Application Date</th>
             <th>Application Status</th>
@@ -12,13 +13,14 @@
     <tr>
         <td>{{app.id}}</td>
         <td>{{app.company}}</td>
+        <td>{{app.position}}</td>
         <td>{{app.applicationDate | date: 'MM/dd/yyyy'}}</td>
         <td>{{app.status}}</td>
         <td><button [routerLink]="['/tracking/edit', app.id]">edit</button>
             <button (click)="deleteApp(app.id)">delete</button></td>
     </tr>
 } @empty {
-    <a href="/tracking/create-application" target="_self" rel="noopener">
+    <a href="/tracking/create" target="_self" rel="noopener">
         <forge-button variant="raised">Create New Application</forge-button>
     </a>
 }

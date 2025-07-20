@@ -21,11 +21,6 @@ export class ViewAllComponent implements OnInit {
     console.log(`Retrieved All Apps: ${this.allApplications}`)
   }
 
-  //   ngOnInit(){
-  //   this.GetAllApps();
-  //   console.log(`Retrieved All Apps: ${this.allApplications}`)
-  // }
-
   GetAllApps(){
     this.httpService.getAllApplications().subscribe({
             next: (apps) =>{

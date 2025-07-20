@@ -2,8 +2,8 @@ import { Component} from '@angular/core';
 import { ApplicationModel } from '../../models/application.model';
 import { HttpService } from '../../services/http.service';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import { Router } from "@angular/router";
-import { ApplicationStatusEnum } from "../../enums/application-status.enum";
+import { Router } from '@angular/router';
+import { ApplicationStatusEnum } from '../../enums/application-status.enum';
 
 @Component({
   selector: 'app-create-application',
@@ -19,6 +19,7 @@ export class CreateComponent {
 
   applicationForm = new FormGroup({
     company: new FormControl(''),
+    position: new FormControl(''),
     applicationDate: new FormControl(''),
     status: new FormControl('')
   })
@@ -32,17 +33,19 @@ export class CreateComponent {
     }
     let newApplication: ApplicationModel = {
       id: undefined,
-      company: this.applicationForm.value.company ?? (new Date()).toString(), 
+      company: this.applicationForm.value.company ?? '', 
+      position:  this.applicationForm.value.position ?? '', 
       applicationDate: this.applicationForm.value.applicationDate ?? '',  //new Date(this.applicationForm.value.applicationDate as Date),
-      status: this.applicationForm.value.status ?? "",
+      status: this.applicationForm.value.status ?? '',
     }
 
     this.httpService.postNewApplication(newApplication).subscribe(() => {
-      this.router.navigate(["/tracking/view-all"]);
+      this.router.navigate(['/tracking/view-all']);
     });
 
     this.applicationForm.patchValue({
       company: '',
+      position: '',
       applicationDate: '',
       status: ''
     })

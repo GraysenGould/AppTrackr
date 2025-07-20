@@ -2,6 +2,9 @@
     <label for="company">Company</label><br>
     <input id="company" type="text" formControlName="company"><br>
 
+    <label for="position">Position</label><br>
+    <input id="position" type="text" formControlName="position"><br>
+
     <label for="application-date">Application Date</label><br>
     <input id="application-date" type="date" formControlName="applicationDate"><br> 
 
@@ -27,5 +30,5 @@
     <input id="offer" type="radio" formControlName="status" value="{{applicationStatusEnum.offer}}">
     <label for="offer">{{applicationStatusEnum.offer}}</label><br>
     <br>
-    <button type="submit">Submit</button><button type="submit" [routerLink]="['/tracking/view-all']">cancel</button><br>
+    <button type="submit">Edit</button><button type="submit" [routerLink]="['/tracking/view-all']">Cancel</button><br>
 </form>

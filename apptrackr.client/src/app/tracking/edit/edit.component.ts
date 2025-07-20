@@ -17,12 +17,14 @@ export class EditComponent implements OnInit{
   public id!: number;
   public application: ApplicationModel = {
     company: '',
+    position: '',
     applicationDate: '',
     status: ''
   }
 
   applicationForm = new FormGroup({
     company: new FormControl(''),
+    position: new FormControl(''),
     applicationDate: new FormControl(''),
     status: new FormControl('')
   })
@@ -39,6 +41,7 @@ export class EditComponent implements OnInit{
         console.log(`Application Retrieved : ${JSON.stringify(this.application)}`);
         this.applicationForm.patchValue({
           company: app[0].company,
+          position: app[0].position,
           applicationDate: this.formatDateString(app[0].applicationDate),
           status: app[0].status
         })
@@ -48,7 +51,6 @@ export class EditComponent implements OnInit{
       }
     })
   }
-  // post updated
 
   formatDateString(dateString: string) {
     let date = new Date(dateString)
@@ -66,7 +68,8 @@ export class EditComponent implements OnInit{
     }
     let newApplication: ApplicationModel = {
       id: this.id,
-      company: this.applicationForm.value.company ?? (new Date()).toString(), 
+      company: this.applicationForm.value.company ?? '', 
+      position: this.applicationForm.value.position ?? '',
       applicationDate: this.applicationForm.value.applicationDate ?? '',  //new Date(this.applicationForm.value.applicationDate as Date),
       status: this.applicationForm.value.status ?? "",
     }
@@ -75,6 +78,7 @@ export class EditComponent implements OnInit{
     });
     this.applicationForm.patchValue({
       company: '',
+      position: '',
       applicationDate: '',
       status: ''
     })

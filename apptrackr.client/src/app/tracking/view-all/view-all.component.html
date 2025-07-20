@@ -14,7 +14,8 @@
         <td>{{app.company}}</td>
         <td>{{app.applicationDate | date: 'MM/dd/yyyy'}}</td>
         <td>{{app.status}}</td>
-        <td><a [routerLink]="['/tracking/edit', app.id]">edit</a> <a>delete</a></td>
+        <td><button [routerLink]="['/tracking/edit', app.id]">edit</button>
+            <button (click)="deleteApp(app.id)">delete</button></td>
     </tr>
 } @empty {
     <a href="/tracking/create-application" target="_self" rel="noopener">

@@ -41,4 +41,13 @@ export class ViewAllComponent implements OnInit {
   PrintApps() {
     console.log(this.allApplications)
   }
+  deleteApp (id : number | undefined){
+    let deleteApp = window.confirm("Do you want to delete this Application?");
+
+    if (typeof id != "undefined" && deleteApp){
+      this.httpService.deleteApplication(id);
+      this.allApplications = this.allApplications.filter(app => app.id != id);
+    }
+
+  }
 }

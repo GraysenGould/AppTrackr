@@ -3,15 +3,17 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import {ApplicationModel} from '../../models/application.model';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RouterLink, Router} from '@angular/router';
+import { ApplicationStatusEnum } from "../../enums/application-status.enum";
 
 @Component({
   selector: 'app-edit',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss'
 })
 export class EditComponent implements OnInit{
-
+  applicationStatusEnum = ApplicationStatusEnum;
   public id!: number;
   public application: ApplicationModel = {
     company: '',
@@ -25,7 +27,7 @@ export class EditComponent implements OnInit{
     status: new FormControl('')
   })
 
-  constructor (private httpService: HttpService, private route: ActivatedRoute){
+  constructor (private httpService: HttpService, private route: ActivatedRoute, private router: Router){
   
   }
 
@@ -68,12 +70,15 @@ export class EditComponent implements OnInit{
       applicationDate: this.applicationForm.value.applicationDate ?? '',  //new Date(this.applicationForm.value.applicationDate as Date),
       status: this.applicationForm.value.status ?? "",
     }
-    this.httpService.editApplication(newApplication);
+    this.httpService.editApplication(newApplication).subscribe(() => {
+        this.router.navigate(["/tracking/view-all"]);
+    });
     this.applicationForm.patchValue({
       company: '',
       applicationDate: '',
       status: ''
     })
+
   }
 
 }

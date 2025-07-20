@@ -8,9 +8,8 @@ import {Observable} from 'rxjs';
 export class HttpService {
     private http = inject(HttpClient);
 
-    postNewApplication (newApp: ApplicationModel){
-        this.http.post<ApplicationModel>('https://localhost:7167/tracking/create', newApp).subscribe(app =>{
-        })
+    postNewApplication (newApp: ApplicationModel): Observable<any>{
+        return this.http.post<ApplicationModel>('https://localhost:7167/tracking/create', newApp);
     }
     
     getApplication (id: number){
@@ -20,8 +19,10 @@ export class HttpService {
     getAllApplications() /*: Observable<ApplicationModel[]> */ {
         return this.http.get<ApplicationModel[]>('https://localhost:7167/tracking/view-all'); // how to not hardcode port number?
     }
-    editApplication(newApp: ApplicationModel) {
-        this.http.put<ApplicationModel>(`https://localhost:7167/tracking/edit/${newApp.id}`, newApp).subscribe(app =>{});
+    editApplication(newApp: ApplicationModel): Observable<any> {
+        return this.http.put(`https://localhost:7167/tracking/edit/${newApp.id}`, newApp);
     }
-
+    deleteApplication(id: number){
+        this.http.delete(`https://localhost:7167/tracking/delete/${id}`).subscribe(app =>{});
+    }
 }

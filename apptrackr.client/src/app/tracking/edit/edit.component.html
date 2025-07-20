@@ -5,7 +5,27 @@
     <label for="application-date">Application Date</label><br>
     <input id="application-date" type="date" formControlName="applicationDate"><br> 
 
-    <label for="status">Status</label><br>
-    <input id="status" type="text" formControlName="status"><br>
-    <button type="submit">Submit</button><br>
+    <br>
+    <label>Status</label>
+    <br>
+    
+    <input id="inProgress" type="radio" formControlName="status" value="{{applicationStatusEnum.inProgress}}">
+    <label for="inProgress">{{applicationStatusEnum.inProgress}}</label><br>
+
+    <input id="completed" type="radio" formControlName="status" value="{{applicationStatusEnum.completed}}">
+    <label for="completed">{{applicationStatusEnum.completed}}</label><br>
+
+    <input id="rejected" type="radio" formControlName="status" value="{{applicationStatusEnum.rejected}}">
+    <label for="rejected">{{applicationStatusEnum.rejected}}</label><br>
+
+    <input id="noReply" type="radio" formControlName="status" value="{{applicationStatusEnum.noReply}}">
+    <label for="noReply">{{applicationStatusEnum.noReply}}</label><br>
+
+    <input id="interview" type="radio" formControlName="status" value="{{applicationStatusEnum.interview}}">
+    <label for="interview">{{applicationStatusEnum.interview}}</label><br>
+
+    <input id="offer" type="radio" formControlName="status" value="{{applicationStatusEnum.offer}}">
+    <label for="offer">{{applicationStatusEnum.offer}}</label><br>
+    <br>
+    <button type="submit">Submit</button><button type="submit" [routerLink]="['/tracking/view-all']">cancel</button><br>
 </form>

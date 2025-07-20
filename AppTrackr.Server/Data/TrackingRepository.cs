@@ -1,6 +1,7 @@
 ﻿using AppTrackr.Server.Interfaces;
 using AppTrackr.Server.Models;
 using System;
+using static System.Net.Mime.MediaTypeNames;
 namespace AppTrackr.Server.Data
 {
 	public class TrackingRepository : ITrackingRepository
@@ -57,13 +58,29 @@ namespace AppTrackr.Server.Data
 			if (appEntry != null)
 			{
 				_trackingContext.Entry(appEntry).CurrentValues.SetValues(application);
+				_trackingContext.SaveChanges();
+
 			}
 			else
 			{
 				throw new Exception($"Id: {application.Id} could not be found in the database");
 			}
-			_trackingContext.SaveChanges();
 
+		}
+
+		public void DeleteApplication(int id)
+		{
+			var appEntry = _trackingContext.Applications.Find(id);
+
+			if (appEntry != null)
+			{
+				_trackingContext.Applications.Remove(appEntry);
+				_trackingContext.SaveChanges();
+			}
+			else
+			{
+				throw new Exception($"Id: {id} could not be found in the database");
+			}
 		}
 
 		public void AddSample()

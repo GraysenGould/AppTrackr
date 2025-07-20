@@ -51,5 +51,12 @@ namespace AppTrackr.Server.Controllers
 			_trackingRepository.EditApplication(application);
 			return Ok();
 		}
+
+		[HttpDelete("delete/{id?}")]
+		public IActionResult DeleteApplication(int id)
+		{
+			_trackingRepository.DeleteApplication(id);
+			return Ok();
+		}
 	}
 }

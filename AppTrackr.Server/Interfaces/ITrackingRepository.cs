@@ -7,5 +7,6 @@ namespace AppTrackr.Server.Interfaces
 		public void AddApplication(ApplicationModel Application);
 		public List<ApplicationModel> GetAllApplications();
 		public void AddSample();
+		public void EditApplication(ApplicationModel application);
 	}
 }

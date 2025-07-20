@@ -20,7 +20,6 @@ export class EditComponent implements OnInit{
   }
 
   applicationForm = new FormGroup({
-    id: new FormControl(0),
     company: new FormControl(''),
     applicationDate: new FormControl(''),
     status: new FormControl('')
@@ -37,7 +36,6 @@ export class EditComponent implements OnInit{
         // do error checking for bad information
         console.log(`Application Retrieved : ${JSON.stringify(this.application)}`);
         this.applicationForm.patchValue({
-          id: app[0].id ?? -1,
           company: app[0].company,
           applicationDate: this.formatDateString(app[0].applicationDate),
           status: app[0].status
@@ -49,9 +47,6 @@ export class EditComponent implements OnInit{
     })
   }
   // post updated
-  putUpdated (): void{
-    console.log("Please implement this method");
-  }
 
   formatDateString(dateString: string) {
     let date = new Date(dateString)
@@ -59,6 +54,26 @@ export class EditComponent implements OnInit{
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
+  }
+
+    putUpdated(): void {
+
+    if (this.applicationForm.value.company == '' || this.applicationForm.value.status == ''){
+      window.alert("Please Fill out all sections of application");
+      return;
+    }
+    let newApplication: ApplicationModel = {
+      id: this.id,
+      company: this.applicationForm.value.company ?? (new Date()).toString(), 
+      applicationDate: this.applicationForm.value.applicationDate ?? '',  //new Date(this.applicationForm.value.applicationDate as Date),
+      status: this.applicationForm.value.status ?? "",
+    }
+    this.httpService.editApplication(newApplication);
+    this.applicationForm.patchValue({
+      company: '',
+      applicationDate: '',
+      status: ''
+    })
   }
 
 }

@@ -13,10 +13,5 @@ namespace AppTrackr.Server.Data
 
 		public DbSet<ApplicationModel> Applications { get; set; }
 
-		//protected override void OnConfiguring
-		//	(DbContextOptionsBuilder optionsBuilder)
-		//{
-		//	optionsBuilder.UseInMemoryDatabase(databaseName: "TrackingDb");
-		//}
 	}
 }

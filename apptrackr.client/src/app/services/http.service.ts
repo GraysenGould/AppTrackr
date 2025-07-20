@@ -20,5 +20,8 @@ export class HttpService {
     getAllApplications() /*: Observable<ApplicationModel[]> */ {
         return this.http.get<ApplicationModel[]>('https://localhost:7167/tracking/view-all'); // how to not hardcode port number?
     }
+    editApplication(newApp: ApplicationModel) {
+        this.http.put<ApplicationModel>(`https://localhost:7167/tracking/edit/${newApp.id}`, newApp).subscribe(app =>{});
+    }
 
 }

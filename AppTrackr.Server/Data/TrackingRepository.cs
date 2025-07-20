@@ -50,6 +50,22 @@ namespace AppTrackr.Server.Data
 			_trackingContext.SaveChanges();
 		}
 
+		public void EditApplication(ApplicationModel application)
+		{
+			var appEntry = _trackingContext.Applications.Find(application.Id);
+
+			if (appEntry != null)
+			{
+				_trackingContext.Entry(appEntry).CurrentValues.SetValues(application);
+			}
+			else
+			{
+				throw new Exception($"Id: {application.Id} could not be found in the database");
+			}
+			_trackingContext.SaveChanges();
+
+		}
+
 		public void AddSample()
 		{
 			var applications = new List<ApplicationModel>

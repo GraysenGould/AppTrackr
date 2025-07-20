@@ -26,8 +26,6 @@ namespace AppTrackr.Server.Controllers
 			return Ok();
 		}
 
-
-
 		[HttpGet("view-all/{id?}")]
 		public IEnumerable<ApplicationModel> GetAllApplications(int? id)
 		{
@@ -44,6 +42,14 @@ namespace AppTrackr.Server.Controllers
 				return allApplications;
 			}
 
+		}
+
+
+		[HttpPut("edit/{id?}")]
+		public IActionResult EditApplication([FromBody] ApplicationModel application)
+		{
+			_trackingRepository.EditApplication(application);
+			return Ok();
 		}
 	}
 }

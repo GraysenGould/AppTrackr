@@ -8,7 +8,6 @@ namespace AppTrackr.Server.Interfaces
 		public List<ApplicationModel> GetAllApplications();
 		public void AddSample();
 		public void EditApplication(ApplicationModel application);
-
 		public void DeleteApplication(int id);
 	}
 }

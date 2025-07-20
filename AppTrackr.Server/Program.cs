@@ -10,11 +10,15 @@ namespace AppTrackr.Server
         {
             var builder = WebApplication.CreateBuilder(args);
 
-			// Add services to the container.
+			// Add database
+			var connectionString = GetConnectionString(builder);
+
 			builder.Services.AddDbContext<TrackingContext>(options =>
-					options.UseInMemoryDatabase(databaseName: "TrackingDb"));
+					options.UseSqlite(connectionString));
 
 			builder.Services.AddScoped<ITrackingRepository, TrackingRepository>();
+
+
 
             builder.Services.AddControllers();
 
@@ -49,5 +53,24 @@ namespace AppTrackr.Server
 
             app.Run();
         }
-    }
+
+		private static string GetConnectionString(WebApplicationBuilder builder)
+		{
+			var folder = Environment.SpecialFolder.LocalApplicationData;
+			var path = Environment.GetFolderPath(folder);
+			var DbPath = System.IO.Path.Join(path, "apptracker.db");
+
+			var rawConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+			if (rawConnectionString != null)
+			{
+				return string.Format(rawConnectionString, DbPath);
+			}
+			else
+			{
+				throw new Exception("DB Connection String Could not be determined");
+			}
+
+		}
+	}
 }

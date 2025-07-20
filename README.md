@@ -25,7 +25,7 @@ Say goodbye to messy spreadsheets and hello to productivity.
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: Angular (SCSS, TypeScript)
+- **Frontend**: Angular (SCSS, TypeScript, Tyler Forge)
 - **Backend**: ASP.NET Core (C#)
-- **Database**: SQL Server
+- **Database**: TBD (Likely SQLite)
 - **Hosting**: TBD (Azure, AWS, or local deployment)

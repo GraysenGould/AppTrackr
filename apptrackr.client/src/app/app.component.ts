@@ -12,5 +12,9 @@ import { ForgeButtonModule, ForgeAppBarModule, ForgeAppBarMenuButtonModule, Forg
     ForgeDrawerModule, ForgeListModule, ForgeListItemModule, ForgeIconModule, ForgeScaffoldModule, ForgeCardModule]
 })
 export class AppComponent {   
-  title = 'Most Awesome App named Aleph'
+
+  public isDrawerOpen = true;
+  toggleDrawer () {
+    this.isDrawerOpen = !this.isDrawerOpen;
+  }
 }

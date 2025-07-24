@@ -1,29 +1,34 @@
-﻿<forge-scaffold styles="--forge-scaffold-height: 300px">
-    <forge-app-bar slot="header" title-text="AppTrackr" >
-        <forge-app-bar-menu-button slot="start"></forge-app-bar-menu-button>
-    </forge-app-bar>
-    <forge-drawer id="mydrawer" slot="body-left">
+﻿<div id="app-container">
+    <forge-scaffold viewport="true" style="display: flex; flex-direction: column; flex: 1;">
+        <forge-app-bar slot="header" title-text="AppTrackr" (click)="toggleDrawer()">
+            <forge-app-bar-menu-button slot="start"></forge-app-bar-menu-button>
+        </forge-app-bar>
+        <forge-drawer id="mydrawer" slot="body-left" [open]="isDrawerOpen">
 
-        <aside>
-            <forge-list navlist>
-                <forge-list-item selected>
-                    <forge-icon slot="start" name="summary"></forge-icon>
-                    <a href="/tracking/summary">Summary</a>
-                </forge-list-item>
-                <forge-list-item>
-                    <forge-icon slot="start" name="view-all"></forge-icon>
-                    <a href="/tracking/view-all">View All</a>
-                </forge-list-item>
-                <forge-list-item>
-                    <forge-icon slot="start" name="create-application"></forge-icon>
-                    <a href="/tracking/create">Create Application</a>
-                </forge-list-item>
-                
-            </forge-list>
-        </aside>
-    </forge-drawer>
-  <main slot="body" style="padding: 16px; background-color: var(--forge-theme-surface-dim);">
+            <aside style="height:90%;">
+                <forge-list navlist>
+                    <forge-list-item selected>
+                        <forge-icon slot="start" name="summary"></forge-icon>
+                        <a href="/tracking/summary">Summary</a>
+                    </forge-list-item>
+                    <forge-list-item>
+                        <forge-icon slot="start" name="view-all"></forge-icon>
+                        <a href="/tracking/view-all">View All</a>
+                    </forge-list-item>
+                    <forge-list-item>
+                        <forge-icon slot="start" name="create-application"></forge-icon>
+                        <a href="/tracking/create">Create Application</a>
+                    </forge-list-item>
+                    
+                </forge-list>
+            </aside>
+        </forge-drawer>
+        <main slot="body" style="padding: 16px; background-color: var(--forge-theme-surface-dim); height: 90%">
 
-        <router-outlet></router-outlet>
-  </main>
-</forge-scaffold>
+                <router-outlet></router-outlet>
+        </main>
+
+
+    </forge-scaffold>
+    <div slot="bottom" class="footer">© 2025 AppTrackr</div>
+</div>

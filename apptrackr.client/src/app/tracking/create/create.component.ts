@@ -4,10 +4,11 @@ import { HttpService } from '../../services/http.service';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApplicationStatusEnum } from '../../enums/application-status.enum';
+import { ForgeCardModule, ForgeFieldModule, ForgeButtonModule} from '@tylertech/forge-angular';
 
 @Component({
   selector: 'app-create-application',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, ForgeCardModule, ForgeFieldModule, ForgeButtonModule],
   templateUrl: './create.component.html',
   styleUrl: './create.component.scss'
 })
@@ -16,6 +17,8 @@ export class CreateComponent {
   //newApplication?: ApplicationModel;
 
   applicationStatusEnum = ApplicationStatusEnum;
+
+  public statusList = Object.values(this.applicationStatusEnum);
 
   applicationForm = new FormGroup({
     company: new FormControl(''),

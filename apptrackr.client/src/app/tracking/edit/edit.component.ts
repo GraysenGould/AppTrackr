@@ -5,15 +5,17 @@ import {ApplicationModel} from '../../models/application.model';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RouterLink, Router} from '@angular/router';
 import { ApplicationStatusEnum } from "../../enums/application-status.enum";
+import { ForgeCardModule, ForgeFieldModule, ForgeButtonModule} from '@tylertech/forge-angular';
 
 @Component({
   selector: 'app-edit',
-  imports: [FormsModule, ReactiveFormsModule, RouterLink],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink, ForgeCardModule, ForgeFieldModule, ForgeButtonModule],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss'
 })
 export class EditComponent implements OnInit{
   applicationStatusEnum = ApplicationStatusEnum;
+  public statusList = Object.values(this.applicationStatusEnum);
   public id!: number;
   public application: ApplicationModel = {
     company: '',

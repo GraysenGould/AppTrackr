@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {RouterOutlet, RouterLink, Router} from '@angular/router';
 import { ForgeButtonModule, ForgeAppBarModule, ForgeAppBarMenuButtonModule, ForgeDrawerModule, 
-  ForgeListModule, ForgeListItemModule, ForgeIconModule, ForgeScaffoldModule, ForgeCardModule} from '@tylertech/forge-angular';
+  ForgeListModule, ForgeListItemModule, ForgeIconModule, ForgeScaffoldModule, ForgeCardModule, 
+  ForgeIconButtonModule, ForgeAppBarProfileButtonModule} from '@tylertech/forge-angular';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,17 @@ import { ForgeButtonModule, ForgeAppBarModule, ForgeAppBarMenuButtonModule, Forg
   standalone: true,
   styleUrl: './app.component.scss',
   imports: [RouterOutlet, ForgeButtonModule, ForgeAppBarModule, ForgeAppBarMenuButtonModule, 
-    ForgeDrawerModule, ForgeListModule, ForgeListItemModule, ForgeIconModule, ForgeScaffoldModule, ForgeCardModule]
+    ForgeDrawerModule, ForgeListModule, ForgeListItemModule, ForgeIconModule, ForgeScaffoldModule, ForgeCardModule,
+  RouterLink, ForgeIconButtonModule, ForgeAppBarProfileButtonModule]
 })
 export class AppComponent {   
-
+  constructor (public router: Router) {}
   public isDrawerOpen = true;
   toggleDrawer () {
     this.isDrawerOpen = !this.isDrawerOpen;
+  }
+
+    isDrawerItemSelected (): boolean {
+    return true;
   }
 }
